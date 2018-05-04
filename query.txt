@@ -1,0 +1,56 @@
+CREATE TABLE `paper_boards` (
+`id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+`category` ENUM(  'Paper',  'Board' ) NOT NULL ,
+`type` VARCHAR( 30 ) NOT NULL ,
+PRIMARY KEY (  `id` )
+) ENGINE = INNODB;
+
+ALTER TABLE  `paper_boards` ADD UNIQUE (
+`category` ,
+`type`
+);
+
+CREATE TABLE `receipthead` (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`pname` VARCHAR( 100 ) NOT NULL ,
+`pb_type` VARCHAR( 30 ) NOT NULL ,
+`pb_size` VARCHAR( 15 ) NOT NULL ,
+`pb_sizein` ENUM(  'inch',  'cm' ) NOT NULL ,
+`gsm` MEDIUMINT UNSIGNED NOT NULL ,
+`weight` DECIMAL( 5, 1 ) UNSIGNED NOT NULL ,
+`quantity` DECIMAL( 6, 2 ) UNSIGNED NOT NULL ,
+`pb_category` ENUM(  'Paper',  'Board' ) NOT NULL ,
+`pb_unit` ENUM(  'Ream',  'Gross' ) NOT NULL ,
+`added_on` DATETIME NOT NULL ,
+`particulars` VARCHAR( 150 ) NOT NULL ,
+`narration` VARCHAR( 200 ) NOT NULL ,
+INDEX (  `pname` ,  `pb_type` )
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS `stock_report` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `receipt_id` int(10) unsigned NOT NULL,
+  `issue_id` int(10) unsigned NOT NULL,
+  `pname` varchar(100) NOT NULL,
+  `pb_type` varchar(30) NOT NULL,
+  `pb_size` varchar(15) NOT NULL,
+  `pb_sizein` enum('inch','cm') NOT NULL,
+  `gsm` mediumint(8) unsigned NOT NULL,
+  `weight` decimal(5,1) unsigned NOT NULL,
+  `rqty` decimal(6,2) unsigned NOT NULL,
+  `iqty` decimal(6,2) unsigned NOT NULL,
+  `bqty` decimal(6,2) unsigned NOT NULL,
+  `pb_category` enum('Paper','Board') NOT NULL,
+  `pb_unit` enum('Ream','Gross') NOT NULL,
+  `added_on` datetime NOT NULL,
+  `particulars` varchar(150) NOT NULL,
+  `narration` varchar(200) NOT NULL,
+  `status` enum('r','t','j','c') NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pname` (`pname`,`pb_type`),
+  KEY `receipt_id` (`receipt_id`),
+  KEY `issue_id` (`issue_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
