@@ -63,7 +63,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=darpanprinters',
+	'dsn'	=> 'mysql:host=localhost;dbname=cmyk',
 	//'hostname' => '',
 	'username' => 'root',
 	'password' => '',

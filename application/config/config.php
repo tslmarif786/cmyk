@@ -24,13 +24,13 @@ ini_set('error_log', './');
 */
 if($_SERVER['HTTP_HOST']=='localhost')
 {
-	$config['base_url']		= 'http://localhost/darpanprinters/';
-	$config['res_url']		= 'http://localhost/darpanprinters/assets/';
-	$config['physical_path']= $_SERVER['DOCUMENT_ROOT'].'/darpanprinters/';	
+	$config['base_url']		= 'http://localhost/cmyk/';
+	$config['res_url']		= 'http://localhost/cmyk/assets/';
+	$config['physical_path']= $_SERVER['DOCUMENT_ROOT'].'/cmyk/';	
 }
 else
 {
-	$config['base_url']		= 'http://'.$_SERVER['HTTP_HOST'].'/index.php/';
+	$config['base_url']		= 'http://'.$_SERVER['HTTP_HOST'].'/';
 	$config['res_url']	    = 'http://'.$_SERVER['HTTP_HOST'].'/assets/';
 	$config['physical_path']=  $_SERVER['DOCUMENT_ROOT'].'/';
 }
@@ -62,7 +62,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
